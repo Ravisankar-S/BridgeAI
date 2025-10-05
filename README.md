@@ -146,6 +146,7 @@ setup.bat
 # Start the app
 start.bat
 # Builds Docker images (~5-10 min) and opens browser
+
 Docker Commands
 bash
 Copy code
