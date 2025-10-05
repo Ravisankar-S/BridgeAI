@@ -1,4 +1,4 @@
-# BridgeAI: Hybrid Knowledge Assistant for Low-Connectivity Environments
+### BridgeAI: Hybrid Knowledge Assistant for Low-Connectivity Environments
 
 **Tagline:** Offline-first AI assistant that becomes smarter online  
 
@@ -6,7 +6,7 @@ BridgeAI is a hybrid AI assistant designed to deliver instant, offline responses
 
 ---
 
-## Table of Contents
+### Table of Contents
 1. [Problem Statement](#problem-statement)  
 2. [Solution Overview](#solution-overview)  
 3. [System Architecture](#system-architecture)  
@@ -21,7 +21,7 @@ BridgeAI is a hybrid AI assistant designed to deliver instant, offline responses
 
 ---
 
-## Problem Statement
+### Problem Statement
 - Communities such as students, researchers, NGOs, and local governments often face slow or unreliable internet connectivity.  
 - Current AI assistants are either:  
   - **Fully cloud-based** → require fast, reliable internet.  
@@ -30,7 +30,7 @@ BridgeAI is a hybrid AI assistant designed to deliver instant, offline responses
 
 ---
 
-## Solution Overview
+### Solution Overview
 BridgeAI bridges this gap with three integrated layers:
 
 1. **Offline Layer (LLaMA)**  
@@ -49,13 +49,13 @@ BridgeAI bridges this gap with three integrated layers:
 
 ---
 
-## System Architecture
+### System Architecture
 ┌─────────────────────────────────────────┐
 <img width="2541" height="3840" alt="Untitled diagram _ Mermaid Chart-2025-10-05-105133" src="https://github.com/user-attachments/assets/c8bead61-beea-42fc-9798-8e4ffeffcbb4" />
 
 ---
 
-## Workflow & User Scenario
+### Workflow & User Scenario
 **Step 1: User Submits Query**  
 Example query:  
 > "Explain the environmental impact of microplastics on marine life and suggest mitigation strategies."
@@ -81,7 +81,7 @@ Example query:
 
 ---
 
-## Handling Internet Outages
+### Handling Internet Outages
 - Offline-only scenario:  
   - LLaMA answers from preloaded data.  
   - MCP logs queries needing later enhancement.  
@@ -92,7 +92,7 @@ Example query:
 
 ---
 
-## Demo & Hackathon Presentation
+### Demo & Hackathon Presentation
 - **Offline Mode:** Demonstrate LLaMA providing instant answers.  
 - **Online Mode:** Show same query enhanced by Cerebras API.  
 - **MCP Logs & Metadata:** Visual demonstration adds “wow factor.”  
@@ -100,7 +100,7 @@ Example query:
 
 ---
 
-## Unique Features
+### Unique Features
 - LLaMA = Offline survival brain.  
 - Cerebras = Cloud superbrain.  
 - Docker MCP = Orchestrator + metadata manager.  
@@ -110,7 +110,7 @@ Example query:
 
 ---
 
-## Suggested Use Cases
+### Suggested Use Cases
 1. **Research Assistant (Students & NGOs)**  
    - Offline: Curriculum, project briefs, or reports.  
    - Online: Summaries, citations, next-step guidance.  
