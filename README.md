@@ -136,17 +136,15 @@ BridgeAI consists of five main layers:
 - **Offline:** Forms, schemes, procedural guidance.  
 - **Online:** Tailored instructions, multi-source summaries, templates.
 
-Quick Start / Installation
-Prerequisites
-Docker Desktop: https://www.docker.com/products/docker-desktop
+## Quick Start / Installation
 
-Python 3.11+ (if running locally)
+### Prerequisites
+- **Docker Desktop:** [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)  
+- **Python 3.11+** (if running locally)  
+- **Cerebras API Key:** [https://cloud.cerebras.ai/](https://cloud.cerebras.ai/)  
 
-Cerebras API Key: https://cloud.cerebras.ai/
-
-Setup (Windows Example)
-bash
-Copy code
+### Setup (Windows Example)
+```bash
 # Run setup
 setup.bat
 # Downloads LLaMA 2 model (~4GB) and configures environment
@@ -175,3 +173,8 @@ License & Acknowledgments
 License: MIT License – see LICENSE file for details
 
 Developed by: Team Cyber_Samurais for WeMakeDevs FutureStack GenAI Hackathon 2025
+
+Acknowledgments: Meta (LLaMA), Cerebras, Docker, FastAPI, React, and community contributors
+
+pgsql
+Copy code
