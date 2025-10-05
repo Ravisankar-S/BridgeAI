@@ -1,8 +1,8 @@
 # BridgeAI: Hybrid Knowledge Assistant for Low-Connectivity Environments
 
-**Tagline:** Offline-first AI assistant that becomes smarter online  
+**Tagline:** Online-first AI assistant with offline fallback  
 
-BridgeAI is a hybrid AI assistant designed to deliver instant, offline responses while leveraging cloud-based intelligence for complex queries when internet connectivity is available. It ensures knowledge accessibility even in low-connectivity environments.  
+BridgeAI is a hybrid AI assistant designed to deliver high-quality, cloud-powered responses when internet connectivity is available while providing instant, offline answers through a lightweight model when connectivity is limited. It ensures knowledge accessibility even in low-connectivity environments.  
 
 ---
 
@@ -24,28 +24,27 @@ BridgeAI is a hybrid AI assistant designed to deliver instant, offline responses
 - Current AI assistants are either:  
   - **Fully cloud-based** → require fast, reliable internet.  
   - **Fully local** → limited intelligence and cannot handle large datasets.  
-- **Gap:** There is no hybrid, offline-first assistant that works on minimal hardware but leverages advanced AI when possible.
+- **Gap:** There is no hybrid assistant that prioritizes advanced online reasoning but can fall back to offline mode when necessary.  
 
 ---
 
 ## Solution Overview
 BridgeAI bridges this gap with three integrated layers:
 
-1. **Offline Layer (LLaMA 2, Chat-Optimized Quantized Model)**  
-   - Lightweight, quantized version of LLaMA 2 optimized for chat.  
-   - Handles lightweight queries, FAQs, and factual questions instantly.  
-   - Runs entirely locally in a Docker container.  
-   - Provides **instant offline inference** with minimal latency.  
-
-2. **Online Layer (LLaMA 3 via Cerebras API)**  
-   - Cloud-hosted LLaMA 3 model for complex queries, long-context reasoning, and advanced computation.  
+1. **Online Layer (LLaMA 3 via Cerebras API)**  
+   - Primary model for complex queries, long-context reasoning, and advanced computation.  
    - Lightning-fast inference powered by Cerebras Cloud.  
-   - Enhances offline responses with detailed explanations, structured guidance, and references.  
+   - Provides enhanced answers with structured guidance, references, and deep reasoning.  
+
+2. **Offline Layer (LLaMA 2, Chat-Optimized Quantized Model)**  
+   - Lightweight, quantized version of LLaMA 2 optimized for chat.  
+   - Handles lightweight queries, FAQs, and factual questions when connectivity is unavailable.  
+   - Runs locally in a Docker container with instant inference.  
 
 3. **Docker MCP Gateway**  
-   - Orchestrates queries between offline and online layers.  
-   - Logs queries, caches responses, and handles offline fallback.  
-   - Ensures seamless hybrid operation in a portable Docker container.  
+   - Orchestrates queries between online and offline layers.  
+   - Automatically detects network availability and switches to offline fallback if needed.  
+   - Logs queries, caches responses, and ensures seamless hybrid operation in a portable Docker container.  
 
 ---
 
@@ -57,7 +56,7 @@ graph TD
     B --> C["Backend (FastAPI) Receives Request"]
     C --> D["MCP Gateway Processes Query"]
     D --> E{"Internet Available?"}
-    E -- Yes --> F["LLaMA 3 via Cerebras API"]
+    E -- Yes --> F["LLaMA 3 via Cerebras API (Online)"]
     E -- No --> G["LLaMA 2 Offline (Chat-Optimized Quantized)"]
     F --> H["MCP Gateway Returns Response"]
     G --> H
@@ -70,44 +69,44 @@ Example:
 
 Step 2: Frontend & Backend Processing
 
-User input is sent from the frontend (React UI) to the backend (FastAPI).
+Query is sent from the frontend (React UI) to the backend (FastAPI).
 
 Backend forwards the request to MCP Gateway for routing.
 
-Step 3: MCP Gateway Determines Online/Offline Handling
+Step 3: Online-First Handling
 
-Checks internet availability and query cache.
+MCP Gateway first attempts to process the query using LLaMA 3 via Cerebras API.
 
-Offline → LLaMA 2 chat-optimized quantized model provides instant responses.
-
-Online → LLaMA 3 via Cerebras API performs advanced reasoning and lightning-fast inference.
+If internet is unavailable or the request fails, the system falls back to LLaMA 2 offline.
 
 Step 4: Response Logging & Enhancement
 
-Offline answers are tagged and cached for future enhancement.
+Offline responses are cached for future enhancement.
 
-When connectivity is restored, cached offline queries are enriched by LLaMA 3 online, creating enhanced, detailed responses.
+When connectivity is restored, cached offline queries are optionally enriched by LLaMA 3 online.
 
 Step 5: User Receives Final Answer
 
-Users see richer explanations, references, or structured guidance.
+Users see high-quality responses online and simplified, instant responses offline.
 
-System notifies: “Your question has been enhanced with additional insights.”
+System notifies: “Your question has been enhanced with additional insights” once enriched.
 
 Handling Internet Outages
 Offline-only scenario:
 
-LLaMA 2 chat-optimized model provides instant, local answers.
+LLaMA 2 chat-optimized model provides instant local answers.
 
 MCP Gateway logs queries for later enhancement.
 
 When connectivity returns:
 
-LLaMA 3 via Cerebras API enriches offline responses.
+LLaMA 3 via Cerebras API enriches previously offline responses.
 
-Hybrid workflow ensures continuity with minimal user disruption.
+Online-first workflow ensures users get the best response whenever possible.
 
 Unique Features
+Online-first, offline fallback ensures optimal performance in any connectivity scenario.
+
 LLaMA 2 = Offline survival brain, chat-optimized, quantized, instant inference.
 
 LLaMA 3 = Online superbrain via Cerebras API, lightning-fast reasoning.
@@ -121,19 +120,19 @@ Tracks queries, caches responses, and enhances answers intelligently.
 Suggested Use Cases
 Research Assistant (Students & NGOs)
 
-Offline: Curriculum, project briefs, or reports.
+Offline: Project briefs, reports, FAQs.
 
-Online: Summaries, citations, next-step guidance.
+Online: Advanced summaries, citations, reasoning.
 
 Education Assistant (Rural Schools)
 
-Offline: Subject Q&A, flashcards.
+Offline: Flashcards, Q&A.
 
 Online: Adaptive lesson plans, quizzes, concept explanations.
 
 Civic Knowledge Portal
 
-Offline: FAQs about schemes, forms, procedures.
+Offline: Forms, schemes, and procedural guidance.
 
 Online: Tailored instructions, multi-source summaries, templates.
 
