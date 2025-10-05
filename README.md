@@ -141,40 +141,53 @@ BridgeAI consists of five main layers:
 ### Prerequisites
 - **Docker Desktop:** [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)  
 - **Python 3.11+** (if running locally)  
+- **Visual Studio Community 2022** with **C++ Desktop Development workload** (for compiling dependencies)  
 - **Cerebras API Key:** [https://cloud.cerebras.ai/](https://cloud.cerebras.ai/)  
 
-### Setup (Windows Example)
+---
+
+## Quick Start / Installation
+
+### Prerequisites
+- **Docker Desktop:** [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)  
+- **Python 3.11+** (if running locally)  
+- **Visual Studio Community 2022** with **C++ Desktop Development workload** (for compiling dependencies)  
+- **Cerebras API Key:** [https://cloud.cerebras.ai/](https://cloud.cerebras.ai/)  
+
+---
+
+## Quick Setup & Run
+This method uses the provided batch scripts for automated setup.
+
 ```bash
-# Run setup
+# Run initial setup
 setup.bat
 # Downloads LLaMA 2 model (~4GB) and configures environment
 
 # Start the app
 start.bat
 # Builds Docker images (~5-10 min) and opens browser
-Docker Commands
-bash
-Copy code
-# Start in foreground
+
+# Stop all running containers
+stop.bat
+```
+
+## Manual Installation
+For advanced users who want full control over the setup and Docker containers.
+
+1. Build Docker Images
+# Build all images for frontend, backend, and MCP Gateway
+docker-compose build
+2. Start Services
+# Start all containers in foreground
 docker-compose up
-
-# Start in background
+# Start all containers in background (detached)
 docker-compose up -d
-
-# Stop all containers
+3. Stop Services
+# Stop all running containers
 docker-compose down
-
+4. Cancel or Restart
 # Rebuild containers after changes
 docker-compose up --build
-
-# View logs
+# View live logs for debugging
 docker-compose logs -f
-License & Acknowledgments
-License: MIT License – see LICENSE file for details
-
-Developed by: Team Cyber_Samurais for WeMakeDevs FutureStack GenAI Hackathon 2025
-
-Acknowledgments: Meta (LLaMA), Cerebras, Docker, FastAPI, React, and community contributors
-
-pgsql
-Copy code
