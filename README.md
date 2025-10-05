@@ -50,7 +50,7 @@ BridgeAI bridges this gap with three integrated layers:
 ---
 
 ### System Architecture
-┌─────────────────────────────────────────┐
+
 <img width="2541" height="3840" alt="Untitled diagram _ Mermaid Chart-2025-10-05-105133" src="https://github.com/user-attachments/assets/c8bead61-beea-42fc-9798-8e4ffeffcbb4" />
 
 ---
