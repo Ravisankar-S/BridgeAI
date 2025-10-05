@@ -15,7 +15,7 @@ BridgeAI is a hybrid AI assistant designed to deliver instant, offline responses
 6. [Demo & Hackathon Presentation](#demo--hackathon-presentation)  
 7. [Unique Features](#unique-features)  
 8. [Suggested Use Cases](#suggested-use-cases)  
-9. [Quick Start / Installation](#quick-start--installation)  
+9. [Quick Start / Installation](#quick-start)  
 
 
 ---
