@@ -1,6 +1,6 @@
-# BridgeAI: Hybrid Knowledge Assistant for Low-Connectivity Environments
+# BridgeAI: Hybrid Knowledge Assistant for Low-Connectivity Environments by Team Cyber_Samurais
 
-BridgeAI is a hybrid AI assistant that delivers high-quality, cloud-powered responses when internet connectivity is available while providing instant, offline answers through a lightweight local model when connectivity is limited. It ensures knowledge accessibility even in low-connectivity environments.  
+BridgeAI is a hybrid AI assistant that delivers high-quality, cloud-powered inference when internet connectivity is available while providing instant, offline answers through a lightweight local model when connectivity is limited. It ensures knowledge accessibility even in low-connectivity environments.  
 
 ---
 
@@ -49,7 +49,7 @@ BridgeAI bridges this gap using **three integrated layers**:
 ## System Architecture
 
 ### Architecture Overview
-BridgeAI consists of five main layers:
+BridgeAI consists of three main layers:
 
 1. **Frontend Layer**: React-based UI for query input and response display.  
 2. **Backend Layer**: FastAPI service receives requests and forwards them to MCP Gateway.  
@@ -57,11 +57,10 @@ BridgeAI consists of five main layers:
    - Decision engine for online/offline routing  
    - Query logging and caching  
    - Metadata management  
-4. **AI Models Layer**:  
-   - **Online:** LLaMA 3 via Cerebras API  
-   - **Offline:** LLaMA 2 Chat-Optimized Quantized model (Dockerized)  
-5. **Persistence Layer**: Stores logs, cached responses, and user preferences.  
 
+  **and using the AI Models**:  
+   - **Online:** LLaMA-3.3-70b via Cerebras API  
+   - **Offline:** LLaMA-2 Chat-Optimized Quantized model  
 ---
 
 ### Diagram 
