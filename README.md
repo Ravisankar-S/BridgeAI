@@ -91,20 +91,12 @@ Example query:
 
 ---
 
-### Demo & Hackathon Presentation
-- **Offline Mode:** Demonstrate LLaMA providing instant answers.  
-- **Online Mode:** Show same query enhanced by Cerebras API.  
-- **MCP Logs & Metadata:** Visual demonstration adds “wow factor.”  
-- **Containerized Deployment:** Judges can run it on any laptop without installation hassles.  
-
----
 
 ### Unique Features
 - LLaMA = Offline survival brain.  
 - Cerebras = Cloud superbrain.  
 - Docker MCP = Orchestrator + metadata manager.  
-- Fully hybrid workflow = resilient, smart, portable, and judge-visible.  
-- Summarizes PDFs, reports, and large datasets.  
+- Fully hybrid workflow = resilient, smart, portable  
 - Tracks queries, logs, and enhanced responses intelligently.  
 
 ---
