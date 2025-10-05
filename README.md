@@ -125,27 +125,43 @@ Example query:
 
 ---
 
-## Quick Start / Installation
+### `QUICKSTART.md`
+
+```markdown
+#  BridgeAI Quick Start
+
+## Prerequisites
+- Docker Desktop: https://www.docker.com/products/docker-desktop/  
+- Python 3.11+ (if running locally)  
+- Cerebras API Key: https://cloud.cerebras.ai/
+
+---
+
+## Setup (Windows Example)
 ```bash
-# Clone repository
-git clone https://github.com/YourUsername/BridgeAI.git
-cd BridgeAI
+# Run setup
+setup.bat
+# This downloads LLaMA model (~4GB) and configures environment
 
-# Build and start containers
-docker-compose up --build
-Access via local web interface or CLI.
-
-Use preloaded documents or upload your own datasets.
-
-Folder Structure
+# Start the app
+start.bat
+# Builds Docker images (~5-10 min) and opens browser
+Docker Commands
 bash
 Copy code
-BridgeAI/
-├─ backend/           # FastAPI / Cerebras API connectors
-├─ llama/             # LLaMA offline container
-├─ mcp_gateway/       # Docker MCP orchestrator
-├─ frontend/          # React + Tailwind UI
-├─ docs/              # Preloaded demo docs
-├─ docker-compose.yml
-└─ README.md
+# Start in foreground
+docker-compose up
+
+# Start in background
+docker-compose up -d
+
+# Stop all containers
+docker-compose down
+
+# Rebuild containers after changes
+docker-compose up --build
+
+# View logs
+docker-compose logs -f
+
 
