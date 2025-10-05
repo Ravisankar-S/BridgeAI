@@ -72,74 +72,69 @@ BridgeAI consists of five main layers:
     
 
     
-Flow Description
-User Query: Submitted via frontend.
-Backend Routing: FastAPI forwards the query to MCP Gateway.
+## Flow Description
+### User Query
+- Submitted via frontend (React UI).
 
-Online-First Decision:
+### Backend Routing
+- FastAPI receives the query and forwards it to the MCP Gateway.
 
-Internet available → LLaMA 3 online handles query.
+### Online-First Decision
+- **Internet available:** LLaMA 3 online handles the query.  
+- **Internet unavailable:** LLaMA 2 offline handles the query.
 
-Internet unavailable → LLaMA 2 offline handles query.
+### Response Handling
+- MCP Gateway sends the response back to the frontend.
 
-Response Handling: Gateway sends response back to frontend.
+### Logging & Caching
+- Offline responses are cached locally.  
+- Cached responses can be optionally enriched by LLaMA 3 once internet connectivity is restored.
 
-Logging & Caching: Offline responses cached and optionally enriched when online.
+---
 
-Workflow & User Scenario
-Example Query:
-"The number of world cups won by argentina."
+## Workflow & User Scenario
+**Example Query:**  
+*"The number of World Cups won by Argentina."*
 
-Steps:
+**Steps:**
+1. User submits the query via the React frontend.  
+2. Backend (FastAPI) sends the query to MCP Gateway.  
+3. MCP Gateway checks connectivity → online first, offline fallback.  
+4. Response is returned to frontend.  
+5. Offline responses are logged for optional later enhancement.
 
-User submits query via React UI.
+---
 
-Backend sends query to MCP Gateway.
+## Handling Internet Outages
+- **Offline Mode:** LLaMA 2 chat-optimized model provides instant local answers.  
+- **Caching:** Queries are stored locally for enrichment once connectivity is restored.  
+- **Online Enhancement:** Cached offline responses can be enriched by LLaMA 3 for detailed reasoning when internet is available.
 
-MCP Gateway checks connectivity → online first, offline fallback.
+---
 
-Response is returned to frontend.
+## Unique Features
+- **Online-first, offline-fallback:** Ensures optimal performance in any connectivity scenario.  
+- **LLaMA 2:** Offline survival brain, chat-optimized, quantized, instant inference.  
+- **LLaMA 3:** Online superbrain via Cerebras API, lightning-fast reasoning.  
+- **Docker MCP Gateway:** Orchestrator, query logger, and metadata manager.  
+- **Fully hybrid workflow:** Resilient, smart, portable.  
+- Tracks queries, caches responses, and enhances answers intelligently.
 
-Offline responses are logged for optional later enhancement.
+---
 
-Handling Internet Outages
-Offline Mode: LLaMA 2 chat-optimized model provides instant local answers.
+## Suggested Use Cases
 
-Caching: Queries are stored locally for enrichment when connectivity is restored.
+### Research Assistant (Students & NGOs)
+- **Offline:** Project briefs, reports, FAQs.  
+- **Online:** Advanced summaries, citations, reasoning.
 
-Online Enhancement: Once online, cached responses can be enriched by LLaMA 3 for detailed reasoning.
+### Education Assistant (Rural Schools)
+- **Offline:** Flashcards, Q&A.  
+- **Online:** Adaptive lesson plans, quizzes, concept explanations.
 
-Unique Features
-Online-first, offline-fallback ensures optimal performance in any connectivity scenario.
-
-LLaMA 2 = Offline survival brain, chat-optimized, quantized, instant inference.
-
-LLaMA 3 = Online superbrain via Cerebras API, lightning-fast reasoning.
-
-Docker MCP Gateway = Orchestrator, query logger, and metadata manager.
-
-Fully hybrid workflow = resilient, smart, portable.
-
-Tracks queries, caches responses, and enhances answers intelligently.
-
-Suggested Use Cases
-Research Assistant (Students & NGOs)
-
-Offline: Project briefs, reports, FAQs.
-
-Online: Advanced summaries, citations, reasoning.
-
-Education Assistant (Rural Schools)
-
-Offline: Flashcards, Q&A.
-
-Online: Adaptive lesson plans, quizzes, concept explanations.
-
-Civic Knowledge Portal
-
-Offline: Forms, schemes, procedural guidance.
-
-Online: Tailored instructions, multi-source summaries, templates.
+### Civic Knowledge Portal
+- **Offline:** Forms, schemes, procedural guidance.  
+- **Online:** Tailored instructions, multi-source summaries, templates.
 
 Quick Start / Installation
 Prerequisites
