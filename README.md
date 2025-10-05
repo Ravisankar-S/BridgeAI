@@ -1,7 +1,8 @@
 # BridgeAI: Hybrid Knowledge Assistant for Low-Connectivity Environments
 
+**Tagline:** Online-first AI assistant with automatic offline fallback
 
-BridgeAI is a hybrid AI assistant designed to deliver high-quality, cloud-powered responses when internet connectivity is available while providing instant, offline answers through a lightweight model when connectivity is limited. It ensures knowledge accessibility even in low-connectivity environments.  
+BridgeAI is a hybrid AI assistant that delivers high-quality, cloud-powered responses when internet connectivity is available while providing instant, offline answers through a lightweight local model when connectivity is limited. It ensures knowledge accessibility even in low-connectivity environments.  
 
 ---
 
@@ -28,83 +29,104 @@ BridgeAI is a hybrid AI assistant designed to deliver high-quality, cloud-powere
 ---
 
 ## Solution Overview
-BridgeAI bridges this gap with three integrated layers:
+BridgeAI bridges this gap using **three integrated layers**:
 
 1. **Online Layer (LLaMA 3 via Cerebras API)**  
-   - Primary model for complex queries, long-context reasoning, and advanced computation.  
+   - Handles complex queries, long-context reasoning, and advanced computation.  
    - Lightning-fast inference powered by Cerebras Cloud.  
    - Provides enhanced answers with structured guidance, references, and deep reasoning.  
 
 2. **Offline Layer (LLaMA 2, Chat-Optimized Quantized Model)**  
-   - Lightweight, quantized version of LLaMA 2 optimized for chat.  
-   - Handles lightweight queries, FAQs, and factual questions when connectivity is unavailable.  
+   - Lightweight, quantized version optimized for chat.  
+   - Handles FAQs, factual questions, and lightweight queries when connectivity is unavailable.  
    - Runs locally in a Docker container with instant inference.  
 
 3. **Docker MCP Gateway**  
    - Orchestrates queries between online and offline layers.  
-   - Automatically detects network availability and switches to offline fallback if needed.  
-   - Logs queries, caches responses, and ensures seamless hybrid operation in a portable Docker container.  
+   - Detects network availability and switches automatically to offline fallback.  
+   - Logs queries, caches responses, and ensures seamless hybrid operation.  
 
 ---
 
 ## System Architecture
 
-```mermaid
-graph TD
-    A["User Sends Query"] --> B["Frontend (React UI)"]
-    B --> C["Backend (FastAPI) Receives Request"]
-    C --> D["MCP Gateway Processes Query"]
-    D --> E{"Internet Available?"}
-    E -- Yes --> F["LLaMA 3 via Cerebras API (Online)"]
-    E -- No --> G["LLaMA 2 Offline (Chat-Optimized Quantized)"]
-    F --> H["MCP Gateway Returns Response"]
+### Architecture Overview
+BridgeAI consists of five main layers:
+
+1. **Frontend Layer**: React-based UI for query input and response display.  
+2. **Backend Layer**: FastAPI service receives requests and forwards them to MCP Gateway.  
+3. **MCP Gateway Layer**:  
+   - Decision engine for online/offline routing  
+   - Query logging and caching  
+   - Metadata management  
+4. **AI Models Layer**:  
+   - **Online:** LLaMA 3 via Cerebras API  
+   - **Offline:** LLaMA 2 Chat-Optimized Quantized model (Dockerized)  
+5. **Persistence Layer**: Stores logs, cached responses, and user preferences.  
+
+---
+
+### Diagram (Mermaid)
+
+    %% User Interaction
+    A[User Sends Query] --> B[Frontend (React UI)]
+    B --> C[Backend (FastAPI)]
+    C --> D[MCP Gateway]
+
+    %% Gateway Decision
+    D --> E{Internet Available?}
+    E -- Yes --> F[LLaMA 3 Online (Cerebras API)]
+    E -- No --> G[LLaMA 2 Offline (Docker)]
+
+    %% Response Flow
+    F --> H[MCP Gateway Returns Response]
     G --> H
-    H --> I["User Receives Response"]
+    H --> I[User Receives Answer]
+
+    %% Logging & Caching
+    D --> J[Query Logger & Response Cache]
+    J --> K[Offline Queries Enrichment (Optional)]
+
+    
+Flow Description
+User Query: Submitted via frontend.
+Backend Routing: FastAPI forwards the query to MCP Gateway.
+
+Online-First Decision:
+
+Internet available → LLaMA 3 online handles query.
+
+Internet unavailable → LLaMA 2 offline handles query.
+
+Response Handling: Gateway sends response back to frontend.
+
+Logging & Caching: Offline responses cached and optionally enriched when online.
+
 Workflow & User Scenario
-Step 1: User Submits Query
-Example:
+Example Query:
+"The number of world cups won by argentina."
 
-"Explain the environmental impact of microplastics on marine life and suggest mitigation strategies."
+Steps:
 
-Step 2: Frontend & Backend Processing
+User submits query via React UI.
 
-Query is sent from the frontend (React UI) to the backend (FastAPI).
+Backend sends query to MCP Gateway.
 
-Backend forwards the request to MCP Gateway for routing.
+MCP Gateway checks connectivity → online first, offline fallback.
 
-Step 3: Online-First Handling
+Response is returned to frontend.
 
-MCP Gateway first attempts to process the query using LLaMA 3 via Cerebras API.
-
-If internet is unavailable or the request fails, the system falls back to LLaMA 2 offline.
-
-Step 4: Response Logging & Enhancement
-
-Offline responses are cached for future enhancement.
-
-When connectivity is restored, cached offline queries are optionally enriched by LLaMA 3 online.
-
-Step 5: User Receives Final Answer
-
-Users see high-quality responses online and simplified, instant responses offline.
-
-System notifies: “Your question has been enhanced with additional insights” once enriched.
+Offline responses are logged for optional later enhancement.
 
 Handling Internet Outages
-Offline-only scenario:
+Offline Mode: LLaMA 2 chat-optimized model provides instant local answers.
 
-LLaMA 2 chat-optimized model provides instant local answers.
+Caching: Queries are stored locally for enrichment when connectivity is restored.
 
-MCP Gateway logs queries for later enhancement.
-
-When connectivity returns:
-
-LLaMA 3 via Cerebras API enriches previously offline responses.
-
-Online-first workflow ensures users get the best response whenever possible.
+Online Enhancement: Once online, cached responses can be enriched by LLaMA 3 for detailed reasoning.
 
 Unique Features
-Online-first, offline fallback ensures optimal performance in any connectivity scenario.
+Online-first, offline-fallback ensures optimal performance in any connectivity scenario.
 
 LLaMA 2 = Offline survival brain, chat-optimized, quantized, instant inference.
 
@@ -131,22 +153,21 @@ Online: Adaptive lesson plans, quizzes, concept explanations.
 
 Civic Knowledge Portal
 
-Offline: Forms, schemes, and procedural guidance.
+Offline: Forms, schemes, procedural guidance.
 
 Online: Tailored instructions, multi-source summaries, templates.
 
 Quick Start / Installation
-markdown
+Prerequisites
+Docker Desktop: https://www.docker.com/products/docker-desktop
+
+Python 3.11+ (if running locally)
+
+Cerebras API Key: https://cloud.cerebras.ai/
+
+Setup (Windows Example)
+bash
 Copy code
-# BridgeAI Quick Start
-
-## Prerequisites
-- Docker Desktop: https://www.docker.com/products/docker-desktop/  
-- Python 3.11+ (if running locally)  
-- Cerebras API Key: https://cloud.cerebras.ai/
-
-## Setup (Windows Example)
-```bash
 # Run setup
 setup.bat
 # Downloads LLaMA 2 model (~4GB) and configures environment
@@ -154,9 +175,9 @@ setup.bat
 # Start the app
 start.bat
 # Builds Docker images (~5-10 min) and opens browser
-
-# Docker Commands
-
+Docker Commands
+bash
+Copy code
 # Start in foreground
 docker-compose up
 
@@ -172,8 +193,6 @@ docker-compose up --build
 # View logs
 docker-compose logs -f
 License & Acknowledgments
-MIT License – see LICENSE for details
+License: MIT License – see LICENSE file for details
 
-Developed by Team Cyber_Samurais for WeMakeDevs FutureStack GenAI Hackathon 2025
-
-Acknowledgments: Meta (LLaMA), Cerebras, Docker, FastAPI, React, and community contributors
+Developed by: Team Cyber_Samurais for WeMakeDevs FutureStack GenAI Hackathon 2025
