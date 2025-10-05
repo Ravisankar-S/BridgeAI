@@ -1,7 +1,5 @@
 # BridgeAI: Hybrid Knowledge Assistant for Low-Connectivity Environments
 
-**Tagline:** Online-first AI assistant with automatic offline fallback
-
 BridgeAI is a hybrid AI assistant that delivers high-quality, cloud-powered responses when internet connectivity is available while providing instant, offline answers through a lightweight local model when connectivity is limited. It ensures knowledge accessibility even in low-connectivity environments.  
 
 ---
@@ -192,3 +190,18 @@ docker-compose up --build
 # View live logs for debugging
 docker-compose logs -f
 ```
+## License & Acknowledgments
+
+### License
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+### Acknowledgments
+- **Developed by:** Team Cyber_Samurais for WeMakeDevs FutureStack GenAI Hackathon 2025  
+- **AI Models & Tools:**  
+  - Meta (LLaMA)  
+  - Cerebras (cloud API)  
+- **Frameworks & Libraries:**  
+  - Docker  
+  - FastAPI  
+  - React  
+- **Community & Contributors:** Thank you to all open-source communities and contributors whose tools and libraries made this project possible.
