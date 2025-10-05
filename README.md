@@ -1,6 +1,5 @@
 # BridgeAI: Hybrid Knowledge Assistant for Low-Connectivity Environments
 
-**Tagline:** Online-first AI assistant with offline fallback  
 
 BridgeAI is a hybrid AI assistant designed to deliver high-quality, cloud-powered responses when internet connectivity is available while providing instant, offline answers through a lightweight model when connectivity is limited. It ensures knowledge accessibility even in low-connectivity environments.  
 
