@@ -66,26 +66,10 @@ BridgeAI consists of five main layers:
 
 ---
 
-### Diagram (Mermaid)
+### Diagram 
+<img width="1941" height="3840" alt="Untitled diagram _ Mermaid Chart-2025-10-05-113759" src="https://github.com/user-attachments/assets/97142c47-eb93-467c-9c80-3057630f1c12" />
 
-    %% User Interaction
-    A[User Sends Query] --> B[Frontend (React UI)]
-    B --> C[Backend (FastAPI)]
-    C --> D[MCP Gateway]
-
-    %% Gateway Decision
-    D --> E{Internet Available?}
-    E -- Yes --> F[LLaMA 3 Online (Cerebras API)]
-    E -- No --> G[LLaMA 2 Offline (Docker)]
-
-    %% Response Flow
-    F --> H[MCP Gateway Returns Response]
-    G --> H
-    H --> I[User Receives Answer]
-
-    %% Logging & Caching
-    D --> J[Query Logger & Response Cache]
-    J --> K[Offline Queries Enrichment (Optional)]
+    
 
     
 Flow Description
