@@ -123,16 +123,15 @@ BridgeAI consists of five main layers:
 ## Suggested Use Cases
 
 ### Research Assistant (Students & NGOs)
-- **Offline:** Project briefs, reports, FAQs.  
-- **Online:** Advanced summaries, citations, reasoning.
+Helps students and NGOs quickly gather information, summaries, and insights for research projects and reports.
 
 ### Education Assistant (Rural Schools)
-- **Offline:** Flashcards, Q&A.  
-- **Online:** Adaptive lesson plans, quizzes, concept explanations.
+Supports teachers and students by providing interactive learning content, explanations, and study guidance.
 
 ### Civic Knowledge Portal
-- **Offline:** Forms, schemes, procedural guidance.  
-- **Online:** Tailored instructions, multi-source summaries, templates.
+Provides citizens with easy access to information, forms, guidelines, and government resources.
+
+---
 
 ## Quick Start / Installation
 
