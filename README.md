@@ -175,19 +175,29 @@ stop.bat
 ## Manual Installation
 For advanced users who want full control over the setup and Docker containers.
 
-1. Build Docker Images
- Build all images for frontend, backend, and MCP Gateway
+### 1. Build Docker Images
+```bash
+# Build all images for frontend, backend, and MCP Gateway
 docker-compose build
+```
 2. Start Services
- Start all containers in foreground
+```bash
+# Start all containers in foreground
 docker-compose up
-Start all containers in background (detached)
+
+# Start all containers in background (detached)
 docker-compose up -d
+```
 3. Stop Services
- Stop all running containers
+```bash
+# Stop all running containers
 docker-compose down
+```
 4. Cancel or Restart
- Rebuild containers after changes
+```bash
+# Rebuild containers after changes
 docker-compose up --build
- View live logs for debugging
+
+# View live logs for debugging
 docker-compose logs -f
+```
