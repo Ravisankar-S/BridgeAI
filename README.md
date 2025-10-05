@@ -144,7 +144,7 @@ Never shows "No internet connection" error
 ### Prerequisites
 - **Docker Desktop:** [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)  
 - **Python 3.11+** (if running locally)  
-- **Visual Studio Community 2022** with **C++ Desktop Development workload** (for compiling dependencies)  
+- **Visual Studio Community 2022** with **C++ Desktop Development workload** (for compiling dependencies as llama.cpp framework is used for offline model)  
 - **Cerebras API Key:** [https://cloud.cerebras.ai/](https://cloud.cerebras.ai/)  
 
 ---
