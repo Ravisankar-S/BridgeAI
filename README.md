@@ -12,8 +12,9 @@ BridgeAI is a hybrid AI assistant that delivers high-quality, cloud-powered infe
 5. [Handling Internet Outages](#handling-internet-outages)  
 6. [Unique Features](#unique-features)  
 7. [Suggested Use Cases](#suggested-use-cases)  
-8. [Quick Start / Installation](#quick-start--installation)  
-9. [License & Acknowledgments](#license--acknowledgments)  
+8. [Quick Start / Installation](#quick-start--installation)
+9. [BridgeAI & Hosting](#bridgeai--hosting)  
+10. [License & Acknowledgments](#license--acknowledgments)  
 
 ---
 
@@ -130,6 +131,12 @@ Supports teachers and students by providing interactive learning content, explan
 ### Civic Knowledge Portal
 Provides citizens with easy access to information, forms, guidelines, and government resources.
 
+### Traveling
+Airplane mode? Still functional!
+
+### Always-Available
+Never shows "No internet connection" error
+
 ---
 
 ## Quick Start / Installation
@@ -143,7 +150,7 @@ Provides citizens with easy access to information, forms, guidelines, and govern
 ---
 
 
-## Quick Setup & Run
+## Quick Setup & Run (Recommended)
 This method uses the provided batch scripts for automated setup.
 
 ```bash
@@ -153,14 +160,14 @@ setup.bat
 
 # Start the app
 start.bat
-# Builds Docker images (~5-10 min) and opens browser
+# Builds Docker images (~5-10 min) and opens browser automatically
 
-# Stop all running containers
+# Don't forget to shut down all containers and images after use
 stop.bat
 ```
 
 ## Manual Installation
-For advanced users who want full control over the setup and Docker containers.
+For users who want to manually setup Docker containers and run BridgeAI.
 
 ### 1. Build Docker Images
 ```bash
@@ -188,6 +195,25 @@ docker-compose up --build
 # View live logs for debugging
 docker-compose logs -f
 ```
+---
+
+## BridgeAI & Hosting
+
+### Our OFFLINE model approach
+We haven't hosted **BridgeAI** online, and we have a Reason for that.
+Unlike other kinds of AI applications, what makes our **BridgeAI** unique is its Hybrid-Performance.
+The offline quantized LlaMa model which acts as a fallback when our online system fails, is an integral part of our setup.
+Right now we have included the model as a **Volume Mount**, rather than mounting it directly.
+we have decided to do so to keep the docker images lighter and for ease of use in the hackathon point-of-view.
+As such, hosting can't be done in this configuration.
+
+### Our Plans
+We plan on continuing our work on **BridgeAI**, even after the end of the hackathon.
+We are planning to implement **Doc Uploads**, **Chat History**, and more to this platform.
+Our Ultimate goal is to host **BridgeAI** as an app.
+
+---
+
 ## License & Acknowledgments
 
 ### License
