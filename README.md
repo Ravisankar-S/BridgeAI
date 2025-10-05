@@ -1,6 +1,7 @@
 # BridgeAI: Hybrid Knowledge Assistant for Low-Connectivity Environments by Team Cyber_Samurais
 
-BridgeAI is a hybrid AI assistant that delivers high-quality, cloud-powered inference when internet connectivity is available while providing instant, offline answers through a lightweight local model when connectivity is limited. It ensures knowledge accessibility even in low-connectivity environments.  
+BridgeAI is a hybrid AI assistant that delivers high-quality, cloud-powered inference when internet connectivity is available while providing instant, offline answers through a lightweight local model when connectivity is limited. It ensures knowledge accessibility even in low-connectivity environments. 
+Brief project Video Link - https://youtu.be/O5ar4QmJpBM
 
 ---
 
