@@ -146,15 +146,6 @@ BridgeAI consists of five main layers:
 
 ---
 
-## Quick Start / Installation
-
-### Prerequisites
-- **Docker Desktop:** [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)  
-- **Python 3.11+** (if running locally)  
-- **Visual Studio Community 2022** with **C++ Desktop Development workload** (for compiling dependencies)  
-- **Cerebras API Key:** [https://cloud.cerebras.ai/](https://cloud.cerebras.ai/)  
-
----
 
 ## Quick Setup & Run
 This method uses the provided batch scripts for automated setup.
